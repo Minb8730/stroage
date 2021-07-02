@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+<!--  mapper 파일을 추가했을 때, 스프링 빈에 참조되고 있는지 반드시 확인할 것!!  root-context에 참조 적어주기 -->
+<mapper namespace="studentDAO"> <!-- class의 이름이 namespace가 된다. -->
+	
+	<!-- select 는 반환형을 어떤 자료형으로 지정할지 resultType으로 속성을 만들어야 한다. -->
+<!-- 	<select id="studentList" resultType="com.itbank.model.StudentDTO"> -->
+	<select id="studentList" resultType="student"> <!-- resultType 에는 hashMap도 지원한다. -->
+		select * from student order by id 
+	</select>
+</mapper>
+
+

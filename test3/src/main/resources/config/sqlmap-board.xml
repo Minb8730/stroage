@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+			"-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="com.itbank.model.Board2DAO">
+	
+	<select id="selectBoardCount" resultType="int" parameterType="hashmap">
+		select count(*) from board2 
+			where deleted='n'
+			<if test="search.equals('') == false">
+				and ${type} like '%${search}%'			
+			</if>
+	</select>
+	
+	<select id="selectAll" parameterType="hashmap" resultType="board">
+		select * from board2
+			where 
+				deleted = 'n' 
+				<if test="search.equals('') == false">
+					and ${type} like '%${search}%'			
+				</if>
+			order by 
+				idx desc
+			offset #{offset} rows
+			fetch first #{perPage} rows only
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="board">
+		select * from board2
+			where
+				idx = #{idx}
+	
+	</select>
+	
+	<update id="updateViewCount" parameterType="int">
+		update board2 set 
+			viewCount = viewCount + 1 
+				where idx = #{idx}
+	</update>
+	
+</mapper>
+
+
+

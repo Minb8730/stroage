@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Config 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.itbank.model.GalleryDAO">
+	<insert id="insert" parameterType="com.itbank.model.GalleryDTO">
+		insert into gallery
+			(idx, originalFileName, storedFileName)
+		values (
+			gallery_seq.nextval,
+			#{originalFileName},
+			#{storedFileName}
+		)
+	</insert>
+	
+	<select id="selectGalleryList" resultType="com.itbank.model.GalleryDTO">
+		select * from gallery order by idx desc
+	</select>
+	
+</mapper>	

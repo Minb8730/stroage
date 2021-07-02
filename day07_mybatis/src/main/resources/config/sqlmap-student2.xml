@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+<mapper namespace="com.itbank.model.StudentDAO2"> <!-- 인터페이스 DAO의 이름, alias 지원하지 않는다. -->
+	
+	<select id="selectStudentList2" resultType="student"> <!-- id는 dao가 가지는 메서드의 이름과 일치하도록 -->
+		select * from student order by id 
+	</select>
+</mapper>
+
+

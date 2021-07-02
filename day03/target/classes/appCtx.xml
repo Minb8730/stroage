@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd">
+		
+	<context:annotation-config/> <!-- XML설정의 일부를 어노테이션으로 처리할 수 있도록 활성화한다. annotation 기능 활성화 --> 
+		
+	<context:component-scan base-package="day03"/>
+	<!-- day03 패키지 내부의 [조건을 만족하는 클래스]에 대해서 자동으로 스프링 빈으로 [등록]한다. -->
+		
+	<!--  스프링에서 직접 관리하는 객체를 스프링 빈이라고 하며, 객체 선언 및 의존성을 설정할 수 있다. -->
+	<bean id="m1" class="day03.Member"/>
+	
+	<bean id="m2" class="day03.Member">
+		<constructor-arg name="name" value="이지은"/>
+		<constructor-arg name="age" value="29"/>
+	</bean>
+	
+	<bean id="m3" class="day03.Member">
+		<property name="name" value="홍진호"/>
+		<property name="age" value="40"/>
+	</bean>
+	
+	<!-- 베터리, 장난감 -->
+<!-- 	<bean id="b1" class="day03.Battery"/> -->
+	
+	<bean id="t1" class="day03.Toy"/> <!-- 기본 생성자 객체 생성 -->
+
+	<bean id="t2" class="day03.Toy">
+		<constructor-arg ref="b1"/>	<!-- b1객체의 참조값을 생성자 매개변수에 넣어준다. -->
+	</bean>	
+	
+	<bean id="t3" class="day03.Toy">	<!--  setter를 이용하여 b1객체를 전달 -->
+		<property name="b" ref="b1"/>	<!-- jsp:setProperty -->
+	</bean>	
+	
+	
+	
+	
+			
+</beans>

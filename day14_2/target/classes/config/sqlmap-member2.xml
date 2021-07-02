@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+			"-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="com.itbank.member2.MemberDAO">
+
+	<insert id="insert" parameterType="member2">
+		insert into member2 values (			
+			#{userid},
+			#{userpw},
+			#{username},
+			#{birth},
+			#{email},
+			#{gender},
+			#{address}
+		)
+	</insert>
+	
+	<select id="login" parameterType="member2" resultType="member2">
+		select * from member2 
+			where
+				userid = #{userid}
+			and userpw = #{userpw}
+	</select>
+	
+	<delete id="delete" parameterType="member2">
+		delete member2 where userid = #{userid}
+	</delete>
+	
+</mapper>
+
+
+
+
+
